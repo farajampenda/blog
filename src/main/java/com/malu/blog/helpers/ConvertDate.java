@@ -3,6 +3,7 @@ package com.malu.blog.helpers;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class ConvertDate {
@@ -80,19 +81,53 @@ public class ConvertDate {
 	    return textConversion(date, "");
 	  }  
 	  
+	 
 	  public static String DatetoTexts(Date date, String time) { 
 	    return textConversion(date, time);
 	  }   
+	
 	  public static String convertDateTimeFormat(Object date) {
 		    String strDate = "";    if (date != null) {
 		      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		      strDate = sdf.format(date);
 		    }    return strDate;
-		  }  public static String toText(Date date) {
+		  } 
+		  
+		  public static String toText(Date date) {
 		    return textConversion(date, "");
-		  }  public static String toText(Date date, String time) {
+		  }
+		 
+		  
+		  public static String LocalDatetoText(LocalDate date) {
+		    return textConversionLocalDate(date, "");
+		  }
+		  private static String textConversionLocalDate(LocalDate date, String type) {
+
+			String strDate = "";
+			String format = "yyyy-MM-dd";   
+			
+			if (type.equalsIgnoreCase("time")) {
+			  format = "yyyy-MM-dd HH:mm:ss";
+			}
+			if (date != null) {
+			  try {
+				DateFormat dateFormat = new SimpleDateFormat(format);
+				strDate = dateFormat.format(date);
+			  } catch (Exception e) {
+				System.out.println("can not be converted to text:" + e.getMessage());
+			  }  
+			
+			}
+			return strDate; 
+		}
+
+
+		public static String toText(Date date, String time) {
 		    return textConversion(date, time);
-		  }  public static Date now() {
+		  } 
+		  
+		 
+		  public static Date now() {
 		    Date date = new Date();
 		    return date;
 		  }  

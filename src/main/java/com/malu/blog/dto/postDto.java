@@ -1,9 +1,11 @@
 package com.malu.blog.dto;
 
 import com.malu.blog.entity.Post;
+import com.malu.blog.helpers.ConvertDate;
 
 import jakarta.persistence.Entity;
 
+@Entity
 public class postDto {
     private Long idDto;
     private String titreDto;
@@ -127,4 +129,17 @@ public class postDto {
     return post;
     
    } 
+
+   public static postDto convertToDto(Post post) {
+    postDto dto=new postDto();
+    dto.setIdDto(post.getId());
+    dto.setTitreDto(post.getTitre());
+    dto.setContenuDto(post.getContenu());
+    dto.setTypeDto(post.getType());
+    
+    dto.setDateDto(ConvertDate.LocalDatetoText(post.getDate()));
+    return dto;
+   }
+
+ 
 }
