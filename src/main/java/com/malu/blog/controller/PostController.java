@@ -26,6 +26,13 @@ public class PostController {
         return service.getData();
     }
 
+    @GetMapping("/test/{id}")
+
+    public String app(@PathVariable("id") int id)
+    {
+        return id+"";
+    }
+
     @GetMapping("/data.api.getOne/{postID}")
     public ResponseEntity<?> PostOne(@PathVariable("postID") Long postID) {
         return  service.getOneData(postID);
