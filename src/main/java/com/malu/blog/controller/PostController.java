@@ -26,11 +26,11 @@ public class PostController {
         return service.getData();
     }
 
-    @GetMapping("/test/{id}")
+    @GetMapping("/test")
 
-    public String app(@PathVariable("id") int id)
+    public String app()
     {
-        return id+"";
+        return  123+" FB";
     }
 
     @GetMapping("/data.api.getOne/{postID}")
